@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your App Name</title>
+</head>
+<body>
+  <header>
+    <h1>Your App Name</h1>
+    <nav>
+      <ul>
+        <li><a href="{% url 'task_list' %}">Task List</a></li>
+           <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <!-- Add other navigation links as needed -->
+      </ul>
+    </nav>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer>
+    <p>&copy; {{ year }} Your App Name</p>
+  </footer>
+</body>
+</html>

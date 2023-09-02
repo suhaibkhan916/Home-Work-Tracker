@@ -1,0 +1,96 @@
+{#{% extends "base.html" %}#}
+{##}
+{#{% block content %}#}
+{#  <h2>Task List</h2>#}
+{#  <ul>#}
+{#    {% for task in tasks %}#}
+{#      <li>#}
+{#        <a href="{% url 'task_detail' task.id %}">{{ task.title }}</a>#}
+{#        (Due: {{ task.due_date }})#}
+{#      </li>#}
+{#    {% empty %}#}
+{#      <p>No tasks available.</p>#}
+{#    {% endfor %}#}
+{#  </ul>#}
+{#  <a href="{% url 'task_create' %}">Create New Task</a>#}
+{#{% endblock %}#}
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="task-list">
+    <h2>Task List</h2>
+    <ul>
+      {% for task in tasks %}
+        <li class="task-item">
+          <a href="{% url 'task_detail' task.id %}" class="task-title">{{ task.title }}</a>
+          <span class="task-due">(Due: {{ task.due_date }})</span>
+        </li>
+      {% empty %}
+        <p>No tasks available.</p>
+      {% endfor %}
+    </ul>
+    <a href="{% url 'task_create' %}" class="create-button">Create New Task</a>
+  </div>
+
+  <style>
+    /* Basic CSS for styling the Task List template */
+    .task-list {
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      color: #333;
+      font-size: 24px;
+      margin-top: 0;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .task-item {
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s;
+    }
+
+    .task-item:hover {
+      background-color: #f5f5f5;
+    }
+
+    .task-title {
+      text-decoration: none;
+      color: #3498db; /* Blue color for task title link */
+      font-weight: bold;
+    }
+
+    .task-due {
+      color: #999;
+    }
+
+    .create-button {
+      background-color: #27ae60; /* Green color for create button */
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .create-button:hover {
+      background-color: #219a52; /* Darker green on hover */
+    }
+  </style>
+{% endblock %}

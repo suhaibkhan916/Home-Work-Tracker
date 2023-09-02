@@ -1,0 +1,181 @@
+{##}
+{#{% extends "base.html" %}#}
+{##}
+{#{% block content %}#}
+{#  <h2>Dashboard</h2>#}
+{##}
+{#  <!-- Pending Tasks -->#}
+{#  <div class="task-group">#}
+{#    <h3 class="task-group-title">Pending Tasks</h3>#}
+{#    {% for task in tasks_pending %}#}
+{#      <div class="task-card">#}
+{#        <h4 class="task-title">{{ task.title }}</h4>#}
+{#        <p class="task-due">Due: {{ task.due_date }}</p>#}
+{#      </div>#}
+{#    {% empty %}#}
+{#      <p class="no-tasks">No pending tasks.</p>#}
+{#    {% endfor %}#}
+{#  </div>#}
+{##}
+{#  <!-- Completed Tasks -->#}
+{#  <div class="task-group">#}
+{#    <h3 class="task-group-title">Completed Tasks</h3>#}
+{#    {% for task in tasks_completed %}#}
+{#      <div class="task-card completed">#}
+{#        <h4 class="task-title">{{ task.title }}</h4>#}
+{#        <p class="task-completed-on">Completed on: {{ task.updated_at|date:"F j, Y" }}</p>#}
+{#      </div>#}
+{#    {% empty %}#}
+{#      <p class="no-tasks">No completed tasks.</p>#}
+{#    {% endfor %}#}
+{#  </div>#}
+{##}
+{#  <!-- Overdue Tasks -->#}
+{#  <div class="task-group">#}
+{#    <h3 class="task-group-title">Overdue Tasks</h3>#}
+{#    {% for task in tasks_overdue %}#}
+{#      <div class="task-card overdue">#}
+{#        <h4 class="task-title">{{ task.title }}</h4>#}
+{#        <p class="task-due">Due: {{ task.due_date }}</p>#}
+{#      </div>#}
+{#    {% empty %}#}
+{#      <p class="no-tasks">No overdue tasks.</p>#}
+{#    {% endfor %}#}
+{#  </div>#}
+{##}
+{#  <style>#}
+{#    /* Basic CSS for styling the dashboard */#}
+{#    .task-group {#}
+{#      margin-bottom: 20px;#}
+{#    }#}
+{##}
+{#    .task-group-title {#}
+{#      color: #125ada;#}
+{#      font-size: 18px;#}
+{#      margin-top: 0;#}
+{#    }#}
+{##}
+{#    .task-card {#}
+{#      background-color: #fff;#}
+{#      padding: 10px;#}
+{#      border: 1px solid #ccc;#}
+{#      border-radius: 5px;#}
+{#      margin-top: 10px;#}
+{#      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);#}
+{#    }#}
+{##}
+{#    .task-title {#}
+{#      font-size: 16px;#}
+{#      margin: 0;#}
+{#    }#}
+{##}
+{#    .task-due, .task-completed-on {#}
+{#      color: #999;#}
+{#      font-size: 14px;#}
+{#      margin: 5px 0;#}
+{#    }#}
+{##}
+{#    .completed {#}
+{#      background-color: #d3f7b1; /* Light green for completed tasks */#}
+{#    }#}
+{##}
+{#    .overdue {#}
+{#      background-color: #ffcccb; /* Light red for overdue tasks */#}
+{#    }#}
+{##}
+{#    .no-tasks {#}
+{#      color: #999;#}
+{#      margin: 10px 0;#}
+{#    }#}
+{#  </style>#}
+{#{% endblock %}#}
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Dashboard</h2>
+
+  <!-- Pending Tasks -->
+  <div class="task-group">
+    <h3 class="task-group-title">Pending Tasks</h3>
+    {% for task in tasks_pending %}
+      <div class="task-card">
+        <h4 class="task-title">{{ task.title }}</h4>
+        <p class="task-due">Due: {{ task.due_date }}</p>
+      </div>
+    {% empty %}
+      <p class="no-tasks">No pending tasks.</p>
+    {% endfor %}
+  </div>
+
+  <!-- Completed Tasks -->
+  <div class="task-group">
+    <h3 class="task-group-title">Completed Tasks</h3>
+    {% for task in tasks_completed %}
+      <div class="task-card completed">
+        <h4 class="task-title">{{ task.title }}</h4>
+        <p class="task-completed-on">Completed on: {{ task.updated_at|date:"F j, Y" }}</p>
+      </div>
+    {% empty %}
+      <p class="no-tasks">No completed tasks.</p>
+    {% endfor %}
+  </div>
+
+  <!-- Overdue Tasks -->
+  <div class="task-group">
+    <h3 class="task-group-title">Overdue Tasks</h3>
+    {% for task in tasks_overdue %}
+      <div class="task-card overdue">
+        <h4 class="task-title">{{ task.title }}</h4>
+        <p class="task-due">Due: {{ task.due_date }}</p>
+      </div>
+    {% empty %}
+      <p class="no-tasks">No overdue tasks.</p>
+    {% endfor %}
+  </div>
+
+  <style>
+    /* Basic CSS for styling the dashboard */
+    .task-group {
+      margin-bottom: 20px;
+    }
+
+    .task-group-title {
+      color: #125ada;
+      font-size: 18px;
+      margin-top: 0;
+    }
+
+    .task-card {
+      background-color: #fff;
+      padding: 10px;
+      border: 1px solid #ccc; /* Add border style */
+      border-radius: 5px;
+      margin-top: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .task-title {
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .task-due, .task-completed-on {
+      color: #999;
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    .completed {
+      background-color: #d3f7b1; /* Light green for completed tasks */
+    }
+
+    .overdue {
+      background-color: #ffcccb; /* Light red for overdue tasks */
+    }
+
+    .no-tasks {
+      color: #999;
+      margin: 10px 0;
+    }
+  </style>
+{% endblock %}

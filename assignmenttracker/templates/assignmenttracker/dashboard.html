@@ -1,0 +1,31 @@
+{% extends "assignmenttracker/base.html" %}
+
+{% block content %}
+  <h2>Dashboard</h2>
+  <h3>Pending Tasks</h3>
+  <ul>
+    {% for task in tasks_pending %}
+      <li>{{ task.title }} (Due: {{ task.due_date }})</li>
+    {% empty %}
+      <p>No pending tasks.</p>
+    {% endfor %}
+  </ul>
+
+  <h3>Completed Tasks</h3>
+  <ul>
+    {% for task in tasks_completed %}
+      <li>{{ task.title }} (Completed on: {{ task.updated_at|date:"F j, Y" }})</li>
+    {% empty %}
+      <p>No completed tasks.</p>
+    {% endfor %}
+  </ul>
+
+  <h3>Overdue Tasks</h3>
+  <ul>
+    {% for task in tasks_overdue %}
+      <li>{{ task.title }} (Due: {{ task.due_date }})</li>
+    {% empty %}
+      <p>No overdue tasks.</p>
+    {% endfor %}
+  </ul>
+{% endblock %}
